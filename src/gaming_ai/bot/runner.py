@@ -13,6 +13,7 @@ from gaming_ai.discord import GamingBot, VoiceManager
 from gaming_ai.models.behavior import BehaviorConfig
 from gaming_ai.services.conversation import ConversationEngine
 from gaming_ai.services.conversation_manager import ConversationManager
+from gaming_ai.services.humalike import HumalikeService
 from gaming_ai.services.llm import GeminiClient, LLMClient, LLMService, OpenAIClient
 from gaming_ai.services.memory import MemoryEngine
 from gaming_ai.services.mood import MoodEngine
@@ -52,6 +53,7 @@ class BotRunner:
         self.tts_engine: TTSEngine | None = None
         self.memory_engine: MemoryEngine | None = None
         self.conversation_manager: ConversationManager | None = None
+        self.humalike_service: HumalikeService | None = None
 
         # ── STT ─────────────────────────────────────────────────────
         if settings.stt_provider == "local":
@@ -99,6 +101,12 @@ class BotRunner:
                 api_key=settings.openai_api_key,
                 voice=settings.tts_voice,
             )
+
+        # ── Humalike ────────────────────────────────────────────────
+        self.humalike_service = HumalikeService(
+            api_key=settings.humalike_api_key,
+            base_url=settings.humalike_base_url,
+        )
 
         # ── Conversation ────────────────────────────────────────────
         self.voice_manager = VoiceManager()
@@ -172,6 +180,7 @@ class BotRunner:
             config=self.behavior_config,
             tts_engine=self.tts_engine,
             voice_manager=self.voice_manager,
+            humalike=self.humalike_service,
         )
         self.bot.conversation_manager = self.conversation_manager
         self.voice_pipeline.set_on_utterance(

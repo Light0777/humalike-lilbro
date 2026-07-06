@@ -10,6 +10,7 @@ from gaming_ai.discord.voice import VoiceManager
 from gaming_ai.models import Utterance
 from gaming_ai.models.behavior import BehaviorConfig
 from gaming_ai.services.conversation import ConversationEngine
+from gaming_ai.services.humalike import HumalikeService
 from gaming_ai.services.memory import MemoryEngine
 from gaming_ai.services.mood import MoodEngine
 from gaming_ai.services.response_generator import ResponseGenerator
@@ -32,6 +33,7 @@ class ConversationManager:
         config: BehaviorConfig | None = None,
         tts_engine: TTSEngine | None = None,
         voice_manager: VoiceManager | None = None,
+        humalike: HumalikeService | None = None,
     ) -> None:
         self._conversation_engine = conversation_engine
         self._memory_engine = memory_engine
@@ -44,6 +46,7 @@ class ConversationManager:
         self._config = config or BehaviorConfig()
         self._tts_engine = tts_engine
         self._voice_manager = voice_manager
+        self._humalike = humalike
 
         self._pending_responses: dict[int, str | None] = {}
 
@@ -99,6 +102,19 @@ class ConversationManager:
                 "Response for guild {}: [{}] {}",
                 guild_id, intent.response_type, text,
             )
+
+            if self._humalike is not None and self._humalike.is_available():
+                humalike_ok = await self._humalike.should_speak(
+                    guild_id=str(guild_id),
+                    sender=utterance.player_id,
+                    content=utterance.text,
+                )
+                if humalike_ok is False:
+                    logger.info("Humalike overrode response — staying silent")
+                    self._pending_responses.pop(guild_id, None)
+                    return
+                logger.debug("Humalike approved response")
+
             await self._play_response(guild_id, text)
         else:
             self._pending_responses.pop(guild_id, None)

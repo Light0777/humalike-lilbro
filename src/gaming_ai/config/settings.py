@@ -48,4 +48,7 @@ class Settings(BaseSettings):
 
     dev_guild_id: int = 0
 
+    humalike_api_key: str = ""
+    humalike_base_url: str = "https://api.humalike.com"
+
     log_level: str = "INFO"

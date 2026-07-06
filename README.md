@@ -15,13 +15,17 @@ flow chart:
 
 ## 🛠️ Tech Stack
 
-| Language | Voice AI | Memory & DB | Speech-to-Text | Text-to-Speech |
-|---|---|---|---|---|
-| <img src="https://skillicons.dev/icons?i=python" height="32" /> | <img src="https://skillicons.dev/icons?i=discord" height="32" /> **discord.py** | <img src="https://skillicons.dev/icons?i=supabase" height="32" /> | 🎙️ **Whisper API** / **faster-whisper** | 🔊 **Edge TTS** / **ElevenLabs** / **OpenAI TTS** |
+| Language | Voice AI | Behavior Layer | Memory & DB |
+|---|---|---|---|
+| <img src="https://skillicons.dev/icons?i=python" height="32" /> | <img src="https://skillicons.dev/icons?i=discord" height="32" /> **discord.py** | 🧠 **Humalike** (turn-taking) | <img src="https://skillicons.dev/icons?i=supabase" height="32" /> |
 
-| LLM Brain | Package Manager | Linting |
+| Speech-to-Text | Text-to-Speech | LLM Brain |
 |---|---|---|
-| 🤖 **Gemini** / **OpenAI** | <img src="https://skillicons.dev/icons?i=py" height="32" /> **uv** | 🧹 **ruff** + **mypy** |
+| 🎙️ **Whisper API** / **faster-whisper** | 🔊 **Edge TTS** / **ElevenLabs** / **OpenAI TTS** | 🤖 **Gemini** / **OpenAI** |
+
+| Package Manager | Linting | Config |
+|---|---|---|
+| ⚡ **uv** | 🧹 **ruff** + **mypy** | ⚙️ **pydantic-settings** |
 
 ## ✨ Features
 
