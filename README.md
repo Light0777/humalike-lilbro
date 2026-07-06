@@ -2,6 +2,9 @@
 
 It's basically a social AI gaming teammate that joins your Discord voice, actually listens to conversations, remembers you across sessions, and talks back like a real player. Built to vibe in voice chat while you play.
 
+![Uploading Group 1.png…]()
+
+
 ## here's the vibe
 (insert screenshot here when I have one)
 
