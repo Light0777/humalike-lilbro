@@ -1,4 +1,4 @@
-# lilbro — the bot that acts human
+# lilbro — the bot that acts human powered by humalike, due to brokeness I'm unable to buy llm's api keys and unable to test this bot to his full potential so if you have paid openAi key test it
 
 It's basically a social AI gaming teammate that joins your Discord voice, actually listens to conversations, remembers you across sessions, and talks back like a real player. Built to vibe in voice chat while you play.
 
@@ -139,7 +139,5 @@ Discord Voice → Opus → PCM → VAD (energy threshold)
 MIT
 
 ---
-
-I play Roblox and hang in Light's server. If you actually read this far, join the server and say hi. This bot is still in its "learning to talk" phase — expect some awkward silences.
 
 — Light0777
