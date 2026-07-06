@@ -1,12 +1,17 @@
 # lilbro — the bot that acts human powered by humalike, due to brokeness I'm unable to buy llm's api keys and unable to test this bot to his full potential so if you have paid openAi key test it
 
-It's basically a social AI gaming teammate that joins your Discord voice, actually listens to conversations, remembers you across sessions, and talks back like a real player. Built to vibe in voice chat while you play.
+Why I'm building this?
 
+After reading through the Humalike plugin architecture, I wanted to test the behavior layer in a setting that feels much harder than normal chat.
+
+Games are full of interruptions, multiple speakers, inside jokes, changing context, and long-term relationships.
+
+LilBro is my attempt to see whether behavior, not just better language models, is what actually makes an AI feel human.
 <img width="1915" height="948" alt="Group 1" src="https://github.com/user-attachments/assets/aa060219-80f3-47b9-8e44-ab29ae650fcf" />
 
+flow chart:
+<img width="1536" height="1024" alt="ChatGPT Image Jul 6, 2026, 08_56_42 PM" src="https://github.com/user-attachments/assets/acaded42-41c5-4ed1-8e4f-d81c9c79b9e0" />
 
-## here's the vibe
-(insert screenshot here when I have one)
 
 ## 🛠️ Tech Stack
 
@@ -136,6 +141,15 @@ Discord Voice → Opus → PCM → VAD (energy threshold)
     → TTS (Edge / ElevenLabs / OpenAI)
     → Discord Voice Output
 ```
+
+How it works
+ - Create a Discord application and invite the bot to your server.
+ - Clone this repository and run it on your PC.
+ - Use /join to have LilBro join your Discord voice channel.
+ - Hop into voice with your friends.
+ - The bot listens to the conversation, remembers context, and (with Humalike) decides when to speak and when to stay silent instead of replying to everything.
+
+Note: This project is still an experiment. I don't currently have paid LLM API credits, so the full behavior pipeline (especially Humalike + high-quality LLM responses) hasn't been tested to its full potential yet. If you have an OpenAI or Gemini API key, feel free to try it out and share your results!
 
 ## License
 
