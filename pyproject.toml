@@ -1,0 +1,58 @@
+[project]
+name = "gaming-ai"
+version = "0.1.0"
+description = "Social Gaming AI Teammate — a Discord bot that behaves like a real player"
+requires-python = ">=3.12"
+dependencies = [
+    "discord-py>=2.4.0",
+    "discord-ext-voice-recv>=0.5.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+    "loguru>=0.7.2",
+    "httpx>=0.26.0",
+    "openai>=1.0.0",
+    "supabase>=2.0.0",
+]
+
+[project.optional-dependencies]
+free = [
+    "google-genai>=1.0.0",
+    "edge-tts>=6.0.0",
+    "miniaudio>=1.50",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.2.0",
+    "mypy>=1.8.0",
+    "gaming-ai[free]",
+]
+
+[project.scripts]
+gaming-ai = "gaming_ai.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+disallow_untyped_defs = true
+disallow_any_unimported = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
