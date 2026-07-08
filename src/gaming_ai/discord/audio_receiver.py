@@ -38,8 +38,13 @@ class AudioReceiver(AudioSink):
         self._speaking: dict[int, bool] = {}
         self._silence_start: dict[int, float] = {}
         self._segment_start: dict[int, float] = {}
+        self._packet_count: int = 0
+        self._last_packet_ts: float = 0.0
 
     def write(self, user: Member | User | None, data: VoiceData) -> None:
+        self._packet_count += 1
+        self._last_packet_ts = time.time()
+
         if user is None:
             logger.debug(
                 "write() called with None user, pcm_len={}",

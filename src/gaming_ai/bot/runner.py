@@ -77,6 +77,14 @@ class BotRunner:
                 temperature=settings.llm_temperature,
                 max_tokens=settings.llm_max_tokens,
             )
+        elif settings.llm_provider == "openrouter":
+            self._llm_client = OpenAIClient(
+                api_key=settings.openrouter_api_key,
+                model=settings.llm_model,
+                temperature=settings.llm_temperature,
+                max_tokens=settings.llm_max_tokens,
+                base_url="https://openrouter.ai/api/v1",
+            )
         else:
             self._llm_client = OpenAIClient(
                 api_key=settings.openai_api_key,

@@ -153,10 +153,20 @@ class VoicePipeline:
                 await asyncio.sleep(30)
                 if self._voice_client is None:
                     break
+                sink = self._voice_client.sink
+                pkt_count = -1
+                pkt_age = 0.0
+                if sink is not None and hasattr(sink, '_packet_count'):
+                    s: Any = sink
+                    pkt_count = s._packet_count
+                    if pkt_count > 0:
+                        pkt_age = time.time() - s._last_packet_ts
                 logger.info(
-                    "Pipeline health: connected={} listening={}",
+                    "Pipeline health: connected={} listening={} packets={} last_pkt={:.0f}s ago",
                     self._voice_client.is_connected(),
                     self._voice_client.is_listening(),
+                    pkt_count,
+                    pkt_age,
                 )
         except asyncio.CancelledError:
             pass

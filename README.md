@@ -21,7 +21,7 @@ flow chart:
 
 | Speech-to-Text | Text-to-Speech | LLM Brain |
 |---|---|---|
-| 🎙️ **Whisper API** / **faster-whisper** | 🔊 **Edge TTS** / **ElevenLabs** / **OpenAI TTS** | 🤖 **Gemini** / **OpenAI** |
+| 🎙️ **Whisper API** / **faster-whisper** | 🔊 **Edge TTS** / **ElevenLabs** / **OpenAI TTS** | 🤖 **Gemini** / **OpenAI** / **OpenRouter** (Tencent Hy3 free) |
 
 | Package Manager | Linting | Config |
 |---|---|---|
